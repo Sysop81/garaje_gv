@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garaje_gv_garaje_gv,garaje_gv.garaje_gv,model_garaje_gv_garaje_gv,base.group_user,1,1,1,1

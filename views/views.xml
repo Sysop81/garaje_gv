@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="garaje_gv.list">
+      <field name="name">garajeGV list</field>
+      <field name="model">garaje_gv.garaje_gv</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="garaje_gv.action_window">
+      <field name="name">garajeGV window</field>
+      <field name="res_model">garaje_gv.garaje_gv</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="garaje_gv.action_server">
+      <field name="name">garajeGV server</field>
+      <field name="model_id" ref="model_garaje_gv_garaje_gv"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="garajeGV" id="garaje_gv.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="garaje_gv.menu_1" parent="garaje_gv.menu_root"/>
+    <menuitem name="Menu 2" id="garaje_gv.menu_2" parent="garaje_gv.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="garaje_gv.menu_1_list" parent="garaje_gv.menu_1"
+              action="garaje_gv.action_window"/>
+    <menuitem name="Server to list" id="garaje_gv" parent="garaje_gv.menu_2"
+              action="garaje_gv.action_server"/>
+-->
+  </data>
+</odoo>

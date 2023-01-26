@@ -2,4 +2,6 @@
 
 #from . import base
 from . import mecanico
-#from . import consumible
+from . import consumible
+from . import vehiculo
+from . import revision

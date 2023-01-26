@@ -24,6 +24,6 @@ class Mecanico(models.Model):
      fechafin = fields.Date('Fecha cese', default = lambda self:fields.Date.today())
      activo = fields.Boolean(default = True)    
 
-     _read_name = nombre
+     _rec_name = 'nombre'
 
   

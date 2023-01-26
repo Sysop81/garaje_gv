@@ -7,10 +7,24 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-     <!-- Acción para consumible -->
+    <!-- Acción para consumible -->
     <record model="ir.actions.act_window" id="garaje_gv_consumible_action_window">
       <field name="name">Consumibles</field>
       <field name="res_model">consumible</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Acción para vehículo -->
+    <record model="ir.actions.act_window" id="garaje_gv_vehiculo_action_window">
+      <field name="name">Vehículos</field>
+      <field name="res_model">vehiculo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Acción para revision -->
+    <record model="ir.actions.act_window" id="garaje_gv_revision_action_window">
+      <field name="name">Revisiones</field>
+      <field name="res_model">revision</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -27,8 +41,37 @@
       </field>
     </record>
 
+
+    <!-- Vista de arbol para consumible -->
+    <record model="ir.ui.view" id="consumible_view_tree">
+      <field name="name">Listado de consumibles</field>
+      <field name="model">consumible</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codigo"/>
+          <field name="nombre"/>
+          <field name="pvp"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista de arbol para vehiculo -->
+    <record model="ir.ui.view" id="vehiculo_view_tree">
+      <field name="name">Listado de vehículos</field>
+      <field name="model">vehiculo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bastidor"/>
+          <field name="marca"/>
+          <field name="modelo"/>
+          <field name="matricula"/>
+          <field name="kml"/>
+        </tree>
+      </field>
+    </record>
+
     <!-- Vista de formulario para un mecánico -->
-    <!--record id="mecanico_view_form" model="ir.ui.view">
+    <record id="mecanico_view_form" model="ir.ui.view">
         <field name="name">Formulario Mecánico</field>
         <field name="model">mecanico</field>
         <field name="arch" type="xml">
@@ -40,36 +83,79 @@
                         <field name="apellido1"/>                 
                         <field name="apellido2"/>                       
                     </group>
+                    <group>
                       <field name="cargo"/>
                       <field name="fechainicio"/>
                       <field name="fechafin"/> 
                       <field name="activo"/>
-                    <group>
-                    
                     </group>
                 </group>
             </form>
         </field>
-    </record-->
+    </record>
 
-   
 
-    <!-- Vista de arbol para consumible -->
-    <!--record model="ir.ui.view" id="consumible_view_tree">
-      <field name="name">Listado de consumibles</field>
-      <field name="model">consumible</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="codigo"/>
-          <field name="nombre"/>
-          <field name="pvp"/>
-        </tree>
-      </field>
-    </record-->
+  <!-- Vista de formulario para un consumible -->
+    <record id="consumible_view_form" model="ir.ui.view">
+        <field name="name">Formulario consumibles</field>
+        <field name="model">consumible</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="codigo"/>                           
+                        <field name="nombre"/>   
+                        <field name="disponible"/>                      
+                    </group>
+                    <group>
+                      <field name="base_i"/>
+                      <field name="iva"/>
+                      <field name="pvp"/> 
+                    </group>
+                    <field name="descripcion"/> 
+                </group>
+            </form>
+        </field>
+    </record>  
+
+    <!-- Vista de formulario para un vehiculo -->
+    <record id="vehiculo_view_form" model="ir.ui.view">
+        <field name="name">Formulario vehículos</field>
+        <field name="model">vehiculo</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="bastidor"/>                           
+                        <field name="matricula"/>   
+                        <field name="marca"/>  
+                        <field name="modelo"/> 
+                        <field name="tipo"/>
+                        <field name="kml"/>
+                        <field name="plazas"/>
+                        <field name="activo"/>
+                    </group>
+                    <group>
+                      <field name="combustible"/>
+                      <field name="cilindrada"/>
+                      <field name="potencia"/>
+                      <field name="estado"/>
+                      <field name="fecha_mat"/>
+                      <field name="valor_compra"/>
+                      <field name="valor_actual"/> 
+                    </group>
+                    <field name="descripcion"/> 
+                </group>
+            </form>
+        </field>
+    </record>  
+    
 
     <menuitem name="Garaje GV" id="garaje_gv_base_menu"/>
     <menuitem name="Mecánicos" id="garaje_gv_mecanico_menu" parent="garaje_gv_base_menu" action = "garaje_gv_mecanico_action_window"/>
     <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
+    <menuitem name="Vehículos" id="garaje_gv_vehiculo_menu" parent="garaje_gv_base_menu" action = "garaje_gv_vehiculo_action_window"/>
+    <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="garaje_gv.list">

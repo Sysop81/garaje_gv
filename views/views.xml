@@ -70,6 +70,20 @@
       </field>
     </record>
 
+    <!-- Vista de arbol para revisiones-->
+    <record model="ir.ui.view" id="revision_view_tree">
+      <field name="name">Listado de revisiones</field>
+      <field name="model">revision</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bastidor"/>
+          <field name="descripcion"/>
+          <field name="fecha"/>
+          <field name="valor_total"/>
+        </tree>
+      </field>
+    </record>
+
     <!-- Vista de formulario para un mecánico -->
     <record id="mecanico_view_form" model="ir.ui.view">
         <field name="name">Formulario Mecánico</field>
@@ -86,7 +100,7 @@
                     <group>
                       <field name="cargo"/>
                       <field name="fechainicio"/>
-                      <field name="fechafin"/> 
+                      <field name="fechafin" attrs="{'invisible': [('activo','!=',False)]}"/> 
                       <field name="activo"/>
                     </group>
                 </group>
@@ -105,11 +119,11 @@
                     <group>
                         <field name="codigo"/>                           
                         <field name="nombre"/>   
-                        <field name="disponible"/>                      
+                        <field name="disponible" placeholder="Selecionar estado" style="background: white !important;"/>                      
                     </group>
                     <group>
-                      <field name="base_i"/>
-                      <field name="iva"/>
+                      <field name="base_i" attrs="{'readonly': [('disponible','!=','si')]}"/>
+                      <field name="iva" attrs="{'readonly': [('disponible','!=','si')]}"/>
                       <field name="pvp"/> 
                     </group>
                     <field name="descripcion"/> 
@@ -149,6 +163,42 @@
             </form>
         </field>
     </record>  
+
+    <!-- Vista de formulario para una revision -->
+    <record id="revision_view_form" model="ir.ui.view">
+        <field name="name">Formulario revisiones</field>
+        <field name="model">revision</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="codigo"/>                           
+                        <field name="bastidor"/>   
+                        <field name="mecanico"/>  
+                    </group>
+                    <group>
+                      <field name="fecha"/>
+                      <field name="kml"/>
+                      <field name="horas_taller"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="descripcion"/>
+                </group>
+                <group>
+                  <field name="consumibles"/>
+                </group>
+                <group>    
+                    <group>
+                      <field name="kml_p"/>
+                    </group>
+                    <group>
+                      <field name="valor_total"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>  
     
 
     <menuitem name="Garaje GV" id="garaje_gv_base_menu"/>
@@ -156,61 +206,6 @@
     <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
     <menuitem name="Vehículos" id="garaje_gv_vehiculo_menu" parent="garaje_gv_base_menu" action = "garaje_gv_vehiculo_action_window"/>
     <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="garaje_gv.list">
-      <field name="name">garajeGV list</field>
-      <field name="model">garaje_gv.garaje_gv</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="garaje_gv.action_window">
-      <field name="name">garajeGV window</field>
-      <field name="res_model">garaje_gv.garaje_gv</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="garaje_gv.action_server">
-      <field name="name">garajeGV server</field>
-      <field name="model_id" ref="model_garaje_gv_garaje_gv"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="garajeGV" id="garaje_gv.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="garaje_gv.menu_1" parent="garaje_gv.menu_root"/>
-    <menuitem name="Menu 2" id="garaje_gv.menu_2" parent="garaje_gv.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="garaje_gv.menu_1_list" parent="garaje_gv.menu_1"
-              action="garaje_gv.action_window"/>
-    <menuitem name="Server to list" id="garaje_gv" parent="garaje_gv.menu_2"
-              action="garaje_gv.action_server"/>
--->
+    
   </data>
 </odoo>

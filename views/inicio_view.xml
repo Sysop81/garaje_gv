@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    
+    <!-- TODO IMPLEMENTAR KAMBAN COMO PUNTO DE ENTRADA-->
+    <!-- Acción para mecánico -->
+    <!--record model="ir.actions.act_window" id="garaje_gv_mecanico_action_window">
+      <field name="name">Mecánicos</field>
+      <field name="res_model">mecanico</field>
+      <field name="view_mode">tree,form</field>
+    </record-->
+
+    
+    
+
+    <menuitem name="Garaje GV" id="garaje_gv_base_menu"/>    
+  </data>
+</odoo>

@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+         <!-- Acción para consumible -->
+        <record model="ir.actions.act_window" id="garaje_gv_consumible_action_window">
+            <field name="name">Consumibles</field>
+            <field name="res_model">consumible</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+         <!-- Vista de arbol para consumible -->
+        <record model="ir.ui.view" id="consumible_view_tree">
+            <field name="name">Listado de consumibles</field>
+            <field name="model">consumible</field>
+            <field name="arch" type="xml">
+                <tree>
+                <field name="codigo"/>
+                <field name="nombre"/>
+                <field name="pvp"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para un consumible -->
+        <record id="consumible_view_form" model="ir.ui.view">
+            <field name="name">Formulario consumibles</field>
+            <field name="model">consumible</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="codigo"/>                           
+                            <field name="nombre"/>   
+                            <field name="disponible" placeholder="Selecionar estado" style="background: white !important;"/>                      
+                        </group>
+                        <group>
+                        <field name="base_i" attrs="{'readonly': [('disponible','!=','si')]}"/>
+                        <field name="iva" attrs="{'readonly': [('disponible','!=','si')]}"/>
+                        <field name="pvp"/> 
+                        </group>
+                        <field name="descripcion"/> 
+                    </group>
+                </form>
+            </field>
+        </record>  
+
+        <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
+
+    </data>
+</odoo>

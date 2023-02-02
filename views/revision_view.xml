@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+         <!-- Acción para revision -->
+        <record model="ir.actions.act_window" id="garaje_gv_revision_action_window">
+            <field name="name">Revisiones</field>
+            <field name="res_model">revision</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Vista de arbol para revisiones-->
+        <record model="ir.ui.view" id="revision_view_tree">
+            <field name="name">Listado de revisiones</field>
+            <field name="model">revision</field>
+            <field name="arch" type="xml">
+                <tree>
+                <field name="bastidor"/>
+                <field name="descripcion"/>
+                <field name="fecha"/>
+                <field name="valor_total"/>
+                </tree>
+            </field>
+        </record>
+
+
+         <!-- Vista de formulario para una revision -->
+        <record id="revision_view_form" model="ir.ui.view">
+            <field name="name">Formulario revisiones</field>
+            <field name="model">revision</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="codigo"/>                           
+                            <field name="bastidor"/>   
+                            <field name="mecanico"/>  
+                        </group>
+                        <group>
+                        <field name="fecha"/>
+                        <field name="kml"/>
+                        <field name="horas_taller"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="descripcion"/>
+                    </group>
+                    <group>
+                    <field name="consumibles"/>
+                    </group>
+                    <group>    
+                        <group>
+                        <field name="kml_p"/>
+                        </group>
+                        <group>
+                        <field name="valor_total"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>  
+
+
+        <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>
+    </data>
+</odoo>

@@ -9,10 +9,10 @@ class Mecanico(models.Model):
      _description = 'Mecánico de garaje GV'
 
     
-     dni = fields.Char('Dni Empleado')
-     nombre = fields.Char('Nombre')
-     apellido1 = fields.Char('Primer Apellido')
-     apellido2 = fields.Char('Segundo Apellido')
+     dni = fields.Char('Dni Empleado',required=True)
+     nombre = fields.Char('Nombre',required=True)
+     apellido1 = fields.Char('Primer Apellido',required=True)
+     apellido2 = fields.Char('Segundo Apellido',required=True)
      cargo = fields.Selection( [
           ('jefetaller', 'Jefe de taller'),
           ('encargado', 'Encargado'),
@@ -22,7 +22,8 @@ class Mecanico(models.Model):
           'Cargo Empleado', default = 'mecanicoof1')
      fechainicio = fields.Date('Fecha inicio', default = lambda self:fields.Date.today()) 
      fechafin = fields.Date('Fecha cese', default = lambda self:fields.Date.today())
-     activo = fields.Boolean(default = True)    
+     activo = fields.Boolean(default = True) 
+     foto = fields.Binary('Foto')   
 
      _rec_name = 'nombre'
 

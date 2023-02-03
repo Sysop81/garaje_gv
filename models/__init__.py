@@ -5,3 +5,4 @@ from . import mecanico
 from . import consumible
 from . import vehiculo
 from . import revision
+from . import garaje_gv

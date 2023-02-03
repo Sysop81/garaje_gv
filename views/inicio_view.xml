@@ -2,16 +2,60 @@
   <data>
     
     <!-- TODO IMPLEMENTAR KAMBAN COMO PUNTO DE ENTRADA-->
-    <!-- Acción para mecánico -->
-    <!--record model="ir.actions.act_window" id="garaje_gv_mecanico_action_window">
-      <field name="name">Mecánicos</field>
-      <field name="res_model">mecanico</field>
-      <field name="view_mode">tree,form</field>
-    </record-->
+    <!-- Acción para Inicio -->
+    <record model="ir.actions.act_window" id="garaje_gv_inicio_action_window">
+      <field name="name">Inicio</field>
+      <field name="res_model">garaje.gv</field>
+      <field name="target">inline</field>
+      <field name="view_mode">form</field>
+    </record>
 
-    
+    <!-- Vista de formulario para un mecánico -->
+    <record id="garaje_gv_view_form" model="ir.ui.view">
+        <field name="name">Inicio</field>
+        <field name="model">garaje.gv</field>
+        <field name="arch" type="xml">
+            <form string="garaje_gv_inicio" create="false" edit="false">
+                <group><h3 class="border-bottom" style="color: #65639e;"><i class="fa fa-home"></i> Inicio</h3></group>
+                <group>
+                  <group>
+                    <button  string="Mecánicos" type="action" name="%(garaje_gv_mecanico_action_window)d" style="width:100%;height:200px;font-size:2em; background:color(srgb 0.4192 0.4178 0.509);color:white;border-radius: 10px;"/>
+                  </group>  
+                  <group>
+                    <button  string="Consumibles" type="action" name="%(garaje_gv_consumible_action_window)d" style="width:100%;height:200px;font-size:2em;background:color(srgb 0.4192 0.4178 0.509);color:white; border-radius: 10px;"/>
+                  </group>
+                </group> 
+                <group>
+                  <group>
+                    <button  string="Revisiones" type="action" name="%(garaje_gv_revision_action_window)d" style="width:100%;height:200px;font-size:2em;background:color(srgb 0.4192 0.4178 0.509);color:white;border-radius: 10px;"/>
+                  </group>  
+                  <group>
+                    <button  string="Vehículos" type="action" name="%(garaje_gv_vehiculo_action_window)d" style="width:100%;height:200px;font-size:2em;background:color(srgb 0.4192 0.4178 0.509);color:white;border-radius: 10px;"/>
+                  </group>
+                </group>   
+            </form>
+        </field>
+    </record>
+
+    <!--record model="ir.ui.view" id="inicio_view_kanban">
+      <field name="name">Inicio</field>
+      <field name="model">garage.gv</field>
+      <field name="arch" type="xml">
+        <kanban>
+          
+          <field name="mecanico"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div>
+                <p> hola</p>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record-->  
     
 
-    <menuitem name="Garaje GV" id="garaje_gv_base_menu"/>    
+    <menuitem name="Garaje GV" id="garaje_gv_base_menu" action="garaje_gv_inicio_action_window"/>    
   </data>
 </odoo>

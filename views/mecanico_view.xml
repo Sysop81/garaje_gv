@@ -4,7 +4,7 @@
     <record model="ir.actions.act_window" id="garaje_gv_mecanico_action_window">
       <field name="name">Mecánicos</field>
       <field name="res_model">mecanico</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <!-- Vista de arbol para mecánico -->
@@ -26,6 +26,7 @@
         <field name="model">mecanico</field>
         <field name="arch" type="xml">
             <form>
+                <group><h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i> Datos personales</h4></group>
                 <group>
                     <group>
                         <field name="dni"/>                           
@@ -34,11 +35,19 @@
                         <field name="apellido2"/>                       
                     </group>
                     <group>
+                      <field name="foto" widget="image" class="oe_avatar"/>
                       <field name="cargo"/>
+                    </group>                 
+                </group>
+                <group><h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-handshake-o"></i> Relación con la empresa</h4></group>
+                <group>
+                    <group>
                       <field name="fechainicio"/>
-                      <field name="fechafin" attrs="{'invisible': [('activo','!=',False)]}"/> 
                       <field name="activo"/>
                     </group>
+                    <group>
+                      <field name="fechafin" attrs="{'invisible': [('activo','!=',False)]}"/> 
+                    </group>  
                 </group>
             </form>
         </field>

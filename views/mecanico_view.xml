@@ -7,6 +7,37 @@
       <field name="view_mode">kanban,tree,form</field>
     </record>
 
+    <!-- Vista kanban para mecánico -->
+    <record model="ir.ui.view" id="mecanico_view_kanban">
+      <field name="name">Mecánicos</field>
+      <field name="model">mecanico</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="nombre"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+          <field name="foto"/>
+          <field name="cargo"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img alt="Avatar" t-att-src="kanban_image('mecanico', 'image_medium',record.foto.raw_value)"/>
+                </div>
+                <div class="oe_kanban_details">
+                  <ul>
+                    <li class="text-uppercase"><strong><field name="nombre"/> <field name="apellido1"/> <field name="apellido2"/></strong></li>
+                    <li>Cargo: <field name="cargo"/></li>
+                  </ul>
+                </div>
+              </div>  
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>  
+
+
     <!-- Vista de arbol para mecánico -->
     <record model="ir.ui.view" id="mecanico_view_tree">
       <field name="name">Listado de mecánicos</field>
@@ -16,6 +47,7 @@
           <field name="nombre"/>
           <field name="apellido1"/>
           <field name="apellido2"/>
+          <field name="cargo"/>
         </tree>
       </field>
     </record>

@@ -26,7 +26,8 @@
         'views/mecanico_view.xml',
         'views/consumible_view.xml',
         'views/vehiculo_view.xml',
-        'views/revision_view.xml'
+        'views/revision_view.xml',
+        'reports/revision_report.xml'
     ],
    
 }

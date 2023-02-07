@@ -17,8 +17,9 @@ class Revision(models.Model):
      valor_total = fields.Float('Total',compute='_add_prices_to_total')
      bastidor = fields.Many2one('vehiculo')   
      mecanico = fields.Many2one('mecanico')
-     consumibles = fields.Many2many('consumible',string='Consumbles')  
+     consumibles = fields.Many2many('consumible',string='Consumbles',domain="[('disponible', '=', 'si')]")  
      descripcion = fields.Html('Descripción', sanitize=True, strip_style=False)
+     val = fields.Float()
         
 
      @api.onchange('consumibles','horas_taller')
@@ -30,4 +31,5 @@ class Revision(models.Model):
                     r.valor_total = r.valor_total + item.pvp
                if r.horas_taller and r.horas_taller > 0:
                     r.valor_total = r.valor_total + (r.horas_taller * precio_hora)
+               r.val = r.valor_total     
                

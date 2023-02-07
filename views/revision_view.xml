@@ -4,7 +4,7 @@
         <record model="ir.actions.act_window" id="garaje_gv_revision_action_window">
             <field name="name">Revisiones</field>
             <field name="res_model">revision</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
         </record>
 
         <!-- Vista de arbol para revisiones-->
@@ -44,7 +44,13 @@
                         <field name="descripcion"/>
                     </group>
                     <group>
-                    <field name="consumibles"/>
+                        <field name="consumibles" widget="many2many">
+                            <tree>
+                                <field name="codigo"/>
+                                <field name="nombre"/>
+                                <field name="pvp"/>
+                            </tree>
+                        </field>
                     </group>
                     <group>    
                         <group>
@@ -57,6 +63,18 @@
                 </form>
             </field>
         </record>  
+
+        <!-- Definicion de la vista para la gráfica -->
+        <record model="ir.ui.view" id="revision_view_graph">
+            <field name="name">Gráfica </field>
+            <field name="model">revision</field>
+            <field name="arch" type="xml">
+                <graph string="Montante por fechas" type="bar">
+                    <field name="fecha"/>
+                    <field name="val"/>
+                </graph>
+            </field>
+        </record>
 
 
         <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>

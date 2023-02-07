@@ -4,7 +4,7 @@
     <record model="ir.actions.act_window" id="garaje_gv_mecanico_action_window">
       <field name="name">Mecánicos</field>
       <field name="res_model">mecanico</field>
-      <field name="view_mode">kanban,tree,form</field>
+      <field name="view_mode">kanban,tree,form,graph</field>
     </record>
 
     <!-- Vista kanban para mecánico -->
@@ -84,6 +84,17 @@
             </form>
         </field>
     </record>
+
+    <!-- Definicion de la vista para la gráfica -->
+    <record model="ir.ui.view" id="mecanico_view_graph">
+      <field name="name">Gráfica </field>
+      <field name="model">mecanico</field>
+      <field name="arch" type="xml">
+          <graph string="Cargo mecánicos" type="pie">
+              <field name="cargo"/>
+          </graph>
+      </field>
+      </record>
 
 
     <menuitem name="Mecánicos" id="garaje_gv_mecanico_menu" parent="garaje_gv_base_menu" action = "garaje_gv_mecanico_action_window"/>

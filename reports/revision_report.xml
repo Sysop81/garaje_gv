@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_revision_view">
+        <!-- Aqui la estructura a seguir -->
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src='/garaje_gv/static/description/icon.png' style="max-height: 100px;"/>
+                            </div>
+                            <div class="col-8">
+                                <h1></h1>
+                                <h1>Informe de revisión. <span t-field="doc.fecha"/></h1>
+                            </div>
+                        </div>
+                        <div class="row border-bottom mt-3 mb-3" style="color: #65639e;">
+                            <div class="col-12">
+                                <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i>Datos generales</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <h4><b>Factura nº:</b> <span t-field="doc.codigo"/>.</h4>
+                            </div>
+                            <div class="col-4">
+                                 <h4><b>Bastidor:</b> <span t-field="doc.bastidor"/></h4>
+                            </div>
+                            <div class="col-4">
+                                 <h4><b>Kilómetros:</b> <span t-field="doc.kml"/></h4>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-3">
+                            <div class="col-4">
+                                <h4><b>Mecánico:</b> <span t-field="doc.mecanico"/></h4>
+                            </div>
+                            <div class="col-4">
+                                <h4><b>horas taller:</b> <span t-field="doc.horas_taller"/> horas. (25€/h)</h4>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            <div class="col-12">
+                                <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i>Descripción</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 t-field="doc.descripcion"/>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-3">
+                            <div class="col-6">
+                                <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i>Próxima revisión</h4>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i>Total</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <h4><b>Próxima revisión:</b><span t-field="doc.kml_p"/> kms</h4>
+                            </div>
+                            <div class="col-6">
+                                <h4><b>Total factura:</b><span t-field="doc.valor_total"/>€</h4>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report id="report_revision" model="revision" string="Informe de revisión" name="garaje_gv.report_revision_view" file="garaje_gv.report_revision_view" report_type="qweb-pdf" />
+</odoo>            

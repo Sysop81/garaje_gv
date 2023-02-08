@@ -28,6 +28,7 @@
             <field name="model">revision</field>
             <field name="arch" type="xml">
                 <form>
+                    <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-car"></i> Datos vehículo - <i class="fa fa-user"></i> mecánico</h4>
                     <group>
                         <group>
                             <field name="codigo"/>                           
@@ -35,14 +36,16 @@
                             <field name="mecanico"/>  
                         </group>
                         <group>
-                        <field name="fecha"/>
-                        <field name="kml"/>
-                        <field name="horas_taller"/>
+                            <field name="fecha"/>
+                            <field name="kml"/>
+                            <field name="horas_taller"/>
                         </group>
                     </group>
+                    <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-pencil-square-o"></i> Tareas realizadas</h4>
                     <group>
                         <field name="descripcion"/>
                     </group>
+                    <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-cubes"></i> Consumibles empleados</h4>
                     <group>
                         <field name="consumibles" widget="many2many">
                             <tree>
@@ -54,10 +57,12 @@
                     </group>
                     <group>    
                         <group>
-                        <field name="kml_p"/>
+                            <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-car"></i> Próxima revisión</h4>
+                            <field name="kml_p"/>
                         </group>
                         <group>
-                        <field name="valor_total"/>
+                        <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-eur"></i> Total revisión</h4>
+                            <field name="valor_total"/>
                         </group>
                     </group>
                 </form>

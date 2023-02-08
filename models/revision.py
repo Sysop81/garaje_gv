@@ -8,19 +8,23 @@ class Revision(models.Model):
      _name = 'revision'
      _description = 'Revisión de un vehículo de garaje GV'
 
+     _order = 'codigo desc, fecha'
     
-     codigo = fields.Integer('Código')
-     kml = fields.Integer('Kilómetros actuales')
+     codigo = fields.Integer('Código',required=True)
+     kml = fields.Integer('Kilómetros actuales',related="bastidor.kml",store=True)
      kml_p = fields.Integer('Kilómetros próxima')
      fecha = fields.Date('Fecha', default = lambda self:fields.Date.today())
-     horas_taller = fields.Integer('Horas taller')
+     horas_taller = fields.Integer('Horas taller',required=True)
      valor_total = fields.Float('Total',compute='_add_prices_to_total')
-     bastidor = fields.Many2one('vehiculo')   
-     mecanico = fields.Many2one('mecanico')
-     consumibles = fields.Many2many('consumible',string='Consumbles',domain="[('disponible', '=', 'si')]")  
+     bastidor = fields.Many2one('vehiculo', domain="[('activo','=','True')]",required=True)   
+     mecanico = fields.Many2one('mecanico', domain="[('activo','=','True')]",required=True)
+     consumibles = fields.Many2many('consumible',string='Consumbles',domain="[('disponible', '=', 'si')]",required=True)  
      descripcion = fields.Html('Descripción', sanitize=True, strip_style=False)
      val = fields.Float()
         
+     _sql_constraints = [
+        ('codigo_uniq', 'UNIQUE (codigo)', 'El código de factura ya existe.')
+    ]
 
      @api.onchange('consumibles','horas_taller')
      def _add_prices_to_total(self):

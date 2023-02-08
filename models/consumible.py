@@ -4,7 +4,7 @@ class Consumible(models.Model):
     _name = 'consumible'
     _description = 'Consumibles de Garaje GV'
 
-    _order = 'codigo desc, nombre'
+    _order = 'nombre'
 
     codigo = fields.Integer('Código producto', required=True)
     nombre = fields.Char('Nombre producto', required=True)

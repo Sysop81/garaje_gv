@@ -9,6 +9,7 @@ class Vehiculo(models.Model):
      _name = 'vehiculo'
      _description = 'Vehiculo de garaje GV'
 
+     _order = 'marca'
     
      bastidor = fields.Char('Bastidor',required=True)
      matricula = fields.Char('Matricula',required=True)

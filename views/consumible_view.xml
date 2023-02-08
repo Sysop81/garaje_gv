@@ -12,10 +12,11 @@
             <field name="name">Listado de consumibles</field>
             <field name="model">consumible</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-danger="disponible != 'si'">
                     <field name="codigo"/>
                     <field name="nombre"/>
                     <field name="pvp"/>
+                    <field name="disponible" invisible="1"/>
                 </tree>
             </field>
         </record>

@@ -18,6 +18,7 @@
           <field name="apellido2"/>
           <field name="foto"/>
           <field name="cargo"/>
+          <field name="activo"/>
           <templates>
             <t t-name="kanban-box">
               <div t-attf-class="oe_kanban_global_click">
@@ -27,7 +28,13 @@
                 <div class="oe_kanban_details">
                   <ul>
                     <li class="text-uppercase"><strong><field name="nombre"/> <field name="apellido1"/> <field name="apellido2"/></strong></li>
-                    <li>Cargo: <field name="cargo"/></li>
+                    <li><b>Cargo: </b><field name="cargo"/></li>
+                    <t t-if="record.activo.raw_value">
+                      <li><span style="font-size:1.2em;font-weight:bold;color:darkgreen;">Dispoible</span></li>
+                    </t>
+                    <t t-else="">
+                      <li><span style="font-size:1.2em;font-weight:bold;color:darkred">No disponible</span></li>
+                    </t>
                   </ul>
                 </div>
               </div>  
@@ -43,11 +50,12 @@
       <field name="name">Listado de mecánicos</field>
       <field name="model">mecanico</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-danger="activo != True">
           <field name="nombre"/>
           <field name="apellido1"/>
           <field name="apellido2"/>
           <field name="cargo"/>
+          <field name="activo"/>
         </tree>
       </field>
     </record>

@@ -8,6 +8,7 @@ class Mecanico(models.Model):
      _name = 'mecanico'
      _description = 'Mecánico de garaje GV'
 
+     _order = 'nombre'
     
      dni = fields.Char('Dni Empleado',required=True)
      nombre = fields.Char('Nombre',required=True)
@@ -27,4 +28,6 @@ class Mecanico(models.Model):
 
      _rec_name = 'nombre'
 
-  
+     _sql_constraints = [
+        ('dni_uniq', 'UNIQUE (dni)', 'El DNI introducido ya existe.')
+     ]

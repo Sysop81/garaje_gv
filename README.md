@@ -1,8 +1,10 @@
 
 <div style="text-align: center;">
-<img src="https://raw.githubusercontent.com/Sysop81/garaje_gv/master/static/description/icon.png" alt="Logo de empresa" width="200" height="100"><
+    <img src="https://raw.githubusercontent.com/Sysop81/garaje_gv/master/static/description/icon.png" alt="Logo de empresa" width="200" height="100">
 </div>
-## Creadores del proyecto
+<hr>
+
+### `Creadores del proyecto`
 
 <ul>
     <li>José Ramón López Guillén</li>

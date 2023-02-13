@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+    <!-- Acción para mecánico -->
+    <record model="ir.actions.act_window" id="garaje_gv_mecanico_action_window">
+      <field name="name">Mecánicos</field>
+      <field name="res_model">mecanico</field>
+      <field name="view_mode">kanban,tree,form,graph</field>
+    </record>
+
+    <!-- Vista kanban para mecánico -->
+    <record model="ir.ui.view" id="mecanico_view_kanban">
+      <field name="name">Mecánicos</field>
+      <field name="model">mecanico</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="nombre"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+          <field name="foto"/>
+          <field name="cargo"/>
+          <field name="activo"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img alt="Avatar" t-att-src="kanban_image('mecanico', 'image_medium',record.foto.raw_value)"/>
+                </div>
+                <div class="oe_kanban_details">
+                  <ul>
+                    <li class="text-uppercase"><strong><field name="nombre"/> <field name="apellido1"/> <field name="apellido2"/></strong></li>
+                    <li><b>Cargo: </b><field name="cargo"/></li>
+                    <t t-if="record.activo.raw_value">
+                      <li><span style="font-size:1.2em;font-weight:bold;color:darkgreen;">Dispoible</span></li>
+                    </t>
+                    <t t-else="">
+                      <li><span style="font-size:1.2em;font-weight:bold;color:darkred">No disponible</span></li>
+                    </t>
+                  </ul>
+                </div>
+              </div>  
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>  
+
+
+    <!-- Vista de arbol para mecánico -->
+    <record model="ir.ui.view" id="mecanico_view_tree">
+      <field name="name">Listado de mecánicos</field>
+      <field name="model">mecanico</field>
+      <field name="arch" type="xml">
+        <tree decoration-danger="activo != True">
+          <field name="nombre"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+          <field name="cargo"/>
+          <field name="activo"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista de formulario para un mecánico -->
+    <record id="mecanico_view_form" model="ir.ui.view">
+        <field name="name">Formulario Mecánico</field>
+        <field name="model">mecanico</field>
+        <field name="arch" type="xml">
+            <form>
+                <group><h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-user-circle-o"></i> Datos personales</h4></group>
+                <group>
+                    <group>
+                        <field name="dni"/>                           
+                        <field name="nombre"/>
+                        <field name="apellido1"/>                 
+                        <field name="apellido2"/>                       
+                    </group>
+                    <group>
+                      <field name="foto" widget="image" class="oe_avatar"/>
+                      <field name="cargo"/>
+                    </group>                 
+                </group>
+                <group><h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-handshake-o"></i> Relación con la empresa</h4></group>
+                <group>
+                    <group>
+                      <field name="fechainicio"/>
+                      <field name="activo"/>
+                    </group>
+                    <group>
+                      <field name="fechafin" attrs="{'invisible': [('activo','!=',False)]}"/> 
+                    </group>  
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Definicion de la vista para la gráfica -->
+    <record model="ir.ui.view" id="mecanico_view_graph">
+      <field name="name">Gráfica </field>
+      <field name="model">mecanico</field>
+      <field name="arch" type="xml">
+          <graph string="Cargo mecánicos" type="pie">
+              <field name="cargo"/>
+          </graph>
+      </field>
+      </record>
+
+
+    <menuitem name="Mecánicos" id="garaje_gv_mecanico_menu" parent="garaje_gv_base_menu" action = "garaje_gv_mecanico_action_window"/>
+    </data>
+</odoo>

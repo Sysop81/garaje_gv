@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+         <!-- Acción para consumible -->
+        <record model="ir.actions.act_window" id="garaje_gv_consumible_action_window">
+            <field name="name">Consumibles</field>
+            <field name="res_model">consumible</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+         <!-- Vista de arbol para consumible -->
+        <record model="ir.ui.view" id="consumible_view_tree">
+            <field name="name">Listado de consumibles</field>
+            <field name="model">consumible</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="disponible != 'si'">
+                    <field name="codigo"/>
+                    <field name="nombre"/>
+                    <field name="pvp"/>
+                    <field name="disponible" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para un consumible -->
+        <record id="consumible_view_form" model="ir.ui.view">
+            <field name="name">Formulario consumibles</field>
+            <field name="model">consumible</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-file-o"></i> Descripción general</h4>
+                            <field name="codigo"/>                           
+                            <field name="nombre"/>   
+                            <field name="disponible" placeholder="Selecionar estado" style="background: white !important;"/>                      
+                        </group>
+                        <group>
+                            <h4 class="border-bottom" style="color: #65639e;"><i class="fa fa-balance-scale"></i> Tarifas</h4>
+                            <field name="base_i" attrs="{'readonly': [('disponible','!=','si')]}"/>
+                            <field name="iva" attrs="{'readonly': [('disponible','!=','si')]}"/>
+                            <field name="pvp" widget="money"/> 
+                        </group>
+                        <field name="descripcion"/> 
+                    </group>
+                </form>
+            </field>
+        </record>  
+
+        <!-- Definicion de la vista para la gráfica -->
+        <record model="ir.ui.view" id="consumible_view_graph">
+            <field name="name">Gráfica </field>
+            <field name="model">consumible</field>
+            <field name="arch" type="xml">
+                <graph string="Disponibilidad" type="pie">
+                    <field name="disponible"/>
+                </graph>
+            </field>
+        </record>
+
+        <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garaje_gv_consumible,garaje_gv.consumible,model_consumible,base.group_user,1,1,1,1
+access_garaje_gv_mecanico,garaje_gv.mecanico,model_mecanico,base.group_user,1,1,1,1
+access_garaje_gv_revision,garaje_gv.revision,model_revision,base.group_user,1,1,1,1
+access_garaje_gv_vehiculo,garaje_gv.vehiculo,model_vehiculo,base.group_user,1,1,1,1
+
+access_garaje_gv_garaje_gv,garaje_gv.garaje_gv,model_garaje_gv,base.group_user,1,1,1,1

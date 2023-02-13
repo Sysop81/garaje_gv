@@ -1,0 +1,41 @@
+<odoo>
+  <data>
+    
+    <!-- Acción para Inicio -->
+    <record model="ir.actions.act_window" id="garaje_gv_inicio_action_window">
+      <field name="name">Inicio</field>
+      <field name="res_model">garaje.gv</field>
+      <field name="target">inline</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <!-- Vista de formulario para menú de inicio -->
+    <record id="garaje_gv_view_form" model="ir.ui.view">
+        <field name="name">Inicio</field>
+        <field name="model">garaje.gv</field>
+        <field name="arch" type="xml">
+            <form string="garaje_gv_inicio" create="false" edit="false">
+                <group><h3 class="border-bottom" style="color: #65639e;"><i class="fa fa-home"></i> Inicio</h3></group>
+                <group>
+                  <group>
+                    <button  string="Mecánicos" type="action" name="%(garaje_gv_mecanico_action_window)d" style="width:100%;height:200px;font-size:2em; background:#7c7bad;color:white;border-radius: 10px;" icon="fa-male"/>
+                  </group>  
+                  <group>
+                    <button  string="Consumibles" type="action" name="%(garaje_gv_consumible_action_window)d" style="width:100%;height:200px;font-size:2em;background:#7c7bad;color:white; border-radius: 10px;" icon="fa-archive"/>
+                  </group>
+                </group> 
+                <group>
+                  <group>
+                    <button  string="Revisiones" type="action" name="%(garaje_gv_revision_action_window)d" style="width:100%;height:200px;font-size:2em;background:#7c7bad;color:white;border-radius: 10px;" icon="fa-wrench"/>
+                  </group>  
+                  <group>
+                    <button  string="Vehículos" type="action" name="%(garaje_gv_vehiculo_action_window)d" style="width:100%;height:200px;font-size:2em;background:#7c7bad;color:white;border-radius: 10px;" icon="fa-car"/>
+                  </group>
+                </group>   
+            </form>
+        </field>
+    </record>
+
+    <menuitem name="Garaje GV" id="garaje_gv_base_menu" action="garaje_gv_inicio_action_window"/>    
+  </data>
+</odoo>

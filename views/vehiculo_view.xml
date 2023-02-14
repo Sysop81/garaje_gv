@@ -5,6 +5,11 @@
             <field name="name">Vehículos</field>
             <field name="res_model">vehiculo</field>
             <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cree un nuevo vehículo
+                </p>
+            </field>
         </record>
 
         <!-- Vista de arbol para vehiculo -->
@@ -55,7 +60,5 @@
                 </form>
             </field>
         </record>  
-
-        <menuitem name="Vehículos" id="garaje_gv_vehiculo_menu" parent="garaje_gv_base_menu" action = "garaje_gv_vehiculo_action_window"/>
     </data>
 </odoo>

@@ -5,6 +5,11 @@
             <field name="name">Consumibles</field>
             <field name="res_model">consumible</field>
             <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cree un nuevo consumible
+                </p>
+            </field>
         </record>
 
          <!-- Vista de arbol para consumible -->
@@ -56,8 +61,5 @@
                 </graph>
             </field>
         </record>
-
-        <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
-
     </data>
 </odoo>

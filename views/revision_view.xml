@@ -5,6 +5,11 @@
             <field name="name">Revisiones</field>
             <field name="res_model">revision</field>
             <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cree un nuevo documento de revisión
+                </p>
+            </field>
         </record>
 
         <!-- Vista de arbol para revisiones-->
@@ -79,9 +84,6 @@
                     <field name="val"/>
                 </graph>
             </field>
-        </record>
-
-
-        <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>
+        </record>  
     </data>
 </odoo>

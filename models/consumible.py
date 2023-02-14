@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class Consumible(models.Model):
     _name = 'consumible'
@@ -25,7 +26,8 @@ class Consumible(models.Model):
 
     _sql_constraints = [
         ('codigo_uniq', 'UNIQUE (codigo)', 'El código del producto ya existe.'),
-        ('nombre_uniq', 'UNIQUE (nombre)', 'El nombre del producto ya existe.')
+        ('nombre_uniq', 'UNIQUE (nombre)', 'El nombre del producto ya existe.'),
+        ('base_i', 'CHECK (base_i > 0)', 'La base imponible debe ser mayor que cero')
     ]
 
     @api.onchange('base_i','iva')
@@ -34,6 +36,7 @@ class Consumible(models.Model):
             if record.base_i and record.base_i > 0:
                 record.pvp = record.base_i * ((int(record.iva) / 100) + 1)
             else:
-                record.pvp = 0    
+                record.pvp = 0
+                    
 
 

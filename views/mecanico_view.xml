@@ -5,6 +5,11 @@
       <field name="name">Mecánicos</field>
       <field name="res_model">mecanico</field>
       <field name="view_mode">kanban,tree,form,graph</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Cree un nuevo mecánico
+        </p>
+      </field>
     </record>
 
     <!-- Vista kanban para mecánico -->
@@ -103,8 +108,5 @@
           </graph>
       </field>
       </record>
-
-
-    <menuitem name="Mecánicos" id="garaje_gv_mecanico_menu" parent="garaje_gv_base_menu" action = "garaje_gv_mecanico_action_window"/>
     </data>
 </odoo>

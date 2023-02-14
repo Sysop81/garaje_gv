@@ -22,12 +22,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/inicio_view.xml',
         'views/mecanico_view.xml',
         'views/consumible_view.xml',
         'views/vehiculo_view.xml',
         'views/revision_view.xml',
-        'reports/revision_report.xml'
+        'views/inicio_view.xml',
+        'reports/revision_report.xml',   
     ],
    
 }

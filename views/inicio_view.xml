@@ -36,6 +36,12 @@
         </field>
     </record>
 
-    <menuitem name="Garaje GV" id="garaje_gv_base_menu" action="garaje_gv_inicio_action_window"/>    
+    <menuitem name="Garaje GV" id="garaje_gv_base_menu" action="garaje_gv_inicio_action_window"/>   
+    <menuitem name="Mecánicos" id="garaje_gv_mecanico_menu" parent="garaje_gv_base_menu" action = "garaje_gv_mecanico_action_window"/> 
+    <menuitem name="Consumibles" id="garaje_gv_consumible_menu" parent="garaje_gv_base_menu" action = "garaje_gv_consumible_action_window"/>
+    <menuitem name="Vehículos" id="garaje_gv_vehiculo_menu" parent="garaje_gv_base_menu" action = "garaje_gv_vehiculo_action_window"/>
+    <menuitem name="Revisiones" id="garaje_gv_revision_menu" parent="garaje_gv_base_menu" action = "garaje_gv_revision_action_window"/>
+
+
   </data>
 </odoo>
